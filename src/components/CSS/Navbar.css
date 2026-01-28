@@ -1,0 +1,56 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10%;
+    height: 80px;
+    background-color: white;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+}
+
+nav .logo {
+    width: 200px;
+    font-size: 1.5rem;
+}
+
+nav::after {
+    content: "";
+    width: 200px;
+}
+
+
+.center-links-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.center-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.center-links a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+}
+
+.center-links a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #000000;
+    transition: 0.3s;
+}
+
+.center-links a:hover::after {
+    width: 100%;
+}
