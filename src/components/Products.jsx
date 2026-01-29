@@ -22,7 +22,6 @@ export default function Products() {
             .catch(err => console.error("Error fetching data:", err));
     }, []);
 
-    // Filter logic
     const handleFilter = (category) => {
         setActiveCategory(category);
         if (category === 'all') {
