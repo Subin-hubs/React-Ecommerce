@@ -13,6 +13,15 @@
     margin-bottom: 2rem;
 }
 
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    font-size: 1.5rem;
+    color: #666;
+}
+
 .detail-content {
     display: flex;
     gap: 4rem;
@@ -67,7 +76,7 @@
 }
 
 .add-to-cart {
-    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    background: #2575fc;
     color: white;
     border: none;
     padding: 1.2rem 3rem;
@@ -82,7 +91,7 @@
     transform: scale(1.05);
 }
 
-/* Mobile View */
+
 @media (max-width: 768px) {
     .detail-content {
         flex-direction: column;

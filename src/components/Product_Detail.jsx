@@ -14,7 +14,7 @@ export default function Product_Detail() {
     }, [id]);
 
     if (!product) {
-        return <div className="loading">Loading product details...</div>;
+        return <div className="loading"><h1>Loading product details...</h1></div>;
     }
 
     return (

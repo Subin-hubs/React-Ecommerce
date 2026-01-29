@@ -9,19 +9,30 @@ export default function Products() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        Promise.all([
-            fetch('https://fakestoreapi.com/products').then(res => res.json()),
-            fetch('https://fakestoreapi.com/products/categories').then(res => res.json())
-        ])
-            .then(([productsData, categoriesData]) => {
+        const fetchData = async () => {
+            try {
+                const [productsRes, categoriesRes] = await Promise.all([
+                    fetch('https://fakestoreapi.com/products'),
+                    fetch('https://fakestoreapi.com/products/categories')
+
+                ]);
+
+                const productsData = await productsRes.json();
+                const categoriesData = await categoriesRes.json();
+
                 setProducts(productsData);
                 setFilteredProducts(productsData);
                 setCategories(categoriesData);
+            } catch (error) {
+                console.error("Error fetching products or categories:", error);
+            } finally {
                 setLoading(false);
-            })
-            .catch(err => console.error("Error fetching data:", err));
-    }, []);
+            }
+        };
 
+        fetchData();
+    }, []);
+    
     const handleFilter = (category) => {
         setActiveCategory(category);
         if (category === 'all') {
@@ -56,7 +67,7 @@ export default function Products() {
                 ))}
             </div>
 
-            {/* Product Grid */}
+     
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '25px' }}>
                 {filteredProducts.map(product => (
                     <div key={product.id} className="product-card" style={cardStyle}>
