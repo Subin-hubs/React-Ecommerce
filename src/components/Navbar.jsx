@@ -6,7 +6,7 @@ export default function Navbar() {
     return (
         <>
             <nav>
-                <h2 className="logo">Kathmandu Hub</h2>
+                <h2 className="logo"><Link to="/">Kathmandu Hub</Link></h2>
                 <div className="center-links-wrapper">
                     <div className="center-links">
                         <Link to="/">Home</Link>

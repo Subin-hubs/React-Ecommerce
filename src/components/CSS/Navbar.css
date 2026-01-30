@@ -13,6 +13,8 @@ nav {
 nav .logo {
     width: 200px;
     font-size: 1.5rem;
+    font-weight: 500;
+    color: #000000;
 }
 
 nav::after {
