@@ -1,11 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import "./CSS/Navbar.css"
 import image from "../assets/cart.png"
 import { CartContext } from '../context/CartContext'
 
+// Import the auth components
+import LoginPage from "../auth/LoginPage"
+import SignupPage from "../auth/SignupPage"
+
 export default function Navbar() {
     const { cart } = useContext(CartContext)
+
+    // State to handle which modal is open
+    const [activeModal, setActiveModal] = useState(null); // 'login' or 'signup'
+
+    const closeModal = () => setActiveModal(null);
 
     return (
         <>
@@ -25,11 +34,36 @@ export default function Navbar() {
                         </Link>
                     </div>
 
-                    <button className="login-btn">Login</button>
-
+                    {/* Trigger Login Modal instead of navigating */}
+                    <button
+                        className="login-btn"
+                        onClick={() => setActiveModal('login')}
+                    >
+                        Login
+                    </button>
                 </div>
             </nav>
 
+            {/* Modal Logic */}
+            {activeModal && (
+                <div className="modal-overlay" onClick={closeModal}>
+                    <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+                        <button className="close-x" onClick={closeModal}>&times;</button>
+
+                        {activeModal === 'login' ? (
+                            <LoginPage
+                                isModal={true}
+                                switchToSignup={() => setActiveModal('signup')}
+                            />
+                        ) : (
+                            <SignupPage
+                                isModal={true}
+                                switchToLogin={() => setActiveModal('login')}
+                            />
+                        )}
+                    </div>
+                </div>
+            )}
         </>
     )
 }
