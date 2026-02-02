@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import "./CSS/Navbar.css"
-import image from "../assets/cart.png"
+// import image from "../assets/cart.png"  <-- Remove this
 import { CartContext } from '../context/CartContext'
+import { FaShoppingCart } from 'react-icons/fa' // <- Cart icon
 
 // Import the auth components
 import LoginPage from "../auth/LoginPage"
@@ -28,10 +29,11 @@ export default function Navbar() {
                 </div>
                 <div className="right-links">
                     <div className="cart-icon-wrapper">
-                        <Link to="/cart">
-                            <img src={image} alt="Cart" className="cart-icon" />
+                        <Link to="/cart" className="cart-link">
+                            <FaShoppingCart className="cart-icon" size={24} />
                             {cart.length > 0 && <span className="cart-badge">{cart.length}</span>}
                         </Link>
+
                     </div>
 
                     {/* Trigger Login Modal instead of navigating */}

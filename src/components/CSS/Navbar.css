@@ -158,3 +158,49 @@ nav::after {
         opacity: 1;
     }
 }
+
+.cart-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    /* adjust size */
+    height: 40px;
+    border: 2px solid #333;
+    /* just border */
+    border-radius: 50%;
+    /* make it circular */
+    background: transparent;
+    /* no dark background */
+    color: #333;
+    /* icon color */
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.cart-link:hover {
+    background: #f0f0f0;
+    /* optional hover effect */
+}
+
+.cart-icon {
+    pointer-events: none;
+    /* so badge click works properly */
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
